@@ -36,6 +36,7 @@ The phrase 'bury' is not an anagrams of 'rubys', and the program should be symme
 ## Technologies Used
 
 ** Ruby 2.4.1
+** Gem rspec for TDD testing
 
 ## License
 

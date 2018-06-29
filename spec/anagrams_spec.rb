@@ -25,6 +25,10 @@ describe ('Phrase#check_for_anagram') do
   end
   it ("6. Will check for vowels/y's in the receiver word") do
     phrase = Phrase.new("rbbr")
-    expect(phrase.validate_word).to(eq("Please enter a word or words with vowels."))
+    expect(phrase.validate_word("ruby")).to(eq("Please enter a word or words with vowels."))
+  end
+  it ("7. Will check for vowels/y's in the argument word") do
+    phrase = Phrase.new("ruby")
+    expect(phrase.validate_word("brrb")).to(eq("Please enter a word or words with vowels."))
   end
 end
