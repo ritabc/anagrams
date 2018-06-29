@@ -35,4 +35,8 @@ describe ('Phrase#check_for_anagram') do
     phrase = Phrase.new("hi")
     expect(phrase.check_for_anagram("bye")).to(eq("That is an antigram!"))
   end
+  it ("9. Will check for anagram phrases") do
+    phrase = Phrase.new("ruby gem")
+    expect(phrase.check_for_anagram("grey bum")).to(eq("That is an anagram!"))
+  end
 end
