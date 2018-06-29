@@ -22,7 +22,7 @@ class Phrase
 
     ## Second attempt, uses &: intersection method
     intersection = @main_phrase.split('') & argument.split('')
-    if intersection.join('') == @main_phrase
+    if ((intersection.join('') == @main_phrase) && (intersection.join('') == argument))
        "That is an anagram!"
      else
        "That is not an anagram!"
