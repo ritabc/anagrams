@@ -8,7 +8,7 @@ class Phrase
     @main_phrase
   end
 
-  def validate_word(secondary)
+  def has_vowels?(secondary)
     main_array = @main_phrase.split('')
     secondary_array = secondary.split('')
     main_contains_vowels = false
@@ -24,9 +24,9 @@ class Phrase
       end
     end
     if (main_contains_vowels && secondary_contains_vowels)
-      "This is a word with vowels"
+      true
     else
-      "Please enter a word or words with vowels."
+      false
     end
   end
 
