@@ -15,4 +15,8 @@ describe ('Phrase#check_for_anagram') do
     phrase = Phrase.new("rubys")
     expect(phrase.check_for_anagram("bury")).to(eq("That is not an anagram!"))
   end
+  it ('takes a singular form of the receiver and a plural argument and determines they are NOT anagrams') do
+    phrase = Phrase.new("ruby")
+    expect(phrase.check_for_anagram("burys")).to(eq("That is not an anagram!"))
+  end
 end
