@@ -21,8 +21,10 @@ class Phrase
     #
 
     ## Second attempt, uses &: intersection method
-    intersection = @main_phrase.split('') & argument.split('')
-    if ((intersection.join('') == @main_phrase) && (intersection.join('') == argument))
+    # intersection_main_preserved is the intersection with the main phrase's order preserved, and vice versa
+    intersection_main_preserved = @main_phrase.split('') & argument.split('')
+    intersection_secondary_preserved = argument.split('') & @main_phrase.split('')
+    if ((intersection_main_preserved.join('') == @main_phrase) && (intersection_secondary_preserved.join('') == argument))
        "That is an anagram!"
      else
        "That is not an anagram!"
