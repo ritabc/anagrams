@@ -47,4 +47,8 @@ describe ('Phrase#check_for_anagram') do
     phrase = Phrase.new("brrb")
     expect(phrase.check_for_anagram("ruby")).to(eq("Please enter a word or words with vowels"))
   end
+  it ("12. Will return the intersection of the receiver and the argument if the two phrases are neither anagrams nor antigrams") do
+    phrase = Phrase.new("cat")
+    expect(phrase.check_for_anagram("batty")).to(eq("These aren't anagrams but 2 letter(s) match: a, t."))
+  end
 end

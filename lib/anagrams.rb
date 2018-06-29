@@ -32,7 +32,6 @@ class Phrase
 
   def check_for_anagram(argument)
     if has_vowels?(argument)
-
       ## intersection_main_preserved means the order is preserved from main
       ## 'lc' stands for lowercase
       main_no_whitespace_lc = @main_phrase.downcase.split(' ').join('')
@@ -43,12 +42,22 @@ class Phrase
         "That is an anagram!"
       elsif intersection_main_preserved == []
         "That is an antigram!"
-       else
-        "That is not an anagram!"
+      else
+        intersection_length = intersection_main_preserved.length
+        intersection_string = " "
+        intersection_main_preserved.each_with_index do |element, index|
+          if (index < (intersection_length - 1))
+            intersection_string = intersection_string + element + ', '
+          elsif (index == (intersection_length - 1))
+            intersection_string = intersection_string + element + '.'
+          else
+            intersection_string = intersection_string + 'badbadbadbadbad'
+          end
+        end
+        "These aren't anagrams but #{intersection_length} letter(s) match:#{intersection_string}"
       end
     else
       "Please enter a word or words with vowels"
     end
   end
-
 end
