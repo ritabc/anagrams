@@ -8,6 +8,8 @@
 ## Description
 
 A method that will check if a word is an anagram against the word it is called on. Anagrams are words that contain the same letters, for example 'ruby' and 'bury'.
+This method will make use of the intersection (&) method which can be called on arrays.
+The phrase 'bury' is not an anagrams of 'rubys', and the program should be symmetric - meaning neither should 'rubys' be an anagram of 'bury'
 
 ## Setup/Contribution Requirements
 
