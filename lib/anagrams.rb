@@ -41,7 +41,7 @@ class Phrase
     if ((intersection_main_preserved.join('') == main_lc) && (intersection_secondary_preserved.join('') == secondary_lc))
        "That is an anagram!"
      # elsif intersection_main_preserved = []
-     #   "That is an anti-gram"
+     #   "That is an antigram!"
      else
        "That is not an anagram!"
      end
