@@ -34,11 +34,11 @@ class Phrase
     ## Attempt 2: uses the intersection method (&)
     ## intersection_main_preserved means the order is preserved from main
     ## 'lc' stands for lowercase
-    main_lc = @main_phrase.downcase
-    secondary_lc = argument.downcase
-    intersection_main_preserved = main_lc.split('') & secondary_lc.split('')
-    intersection_secondary_preserved = secondary_lc.split('') & main_lc.split('')
-    if ((intersection_main_preserved.join('') == main_lc) && (intersection_secondary_preserved.join('') == secondary_lc))
+    main_no_whitespace_lc = @main_phrase.downcase.split(' ').join('')
+    secondary_no_whitespace_lc = argument.downcase.split(' ').join('')
+    intersection_main_preserved = main_no_whitespace_lc.split('') & secondary_no_whitespace_lc.split('')
+    intersection_secondary_preserved = secondary_no_whitespace_lc.split('') & main_no_whitespace_lc.split('')
+    if ((intersection_main_preserved.join('') == main_no_whitespace_lc) && (intersection_secondary_preserved.join('') == secondary_no_whitespace_lc))
        "That is an anagram!"
      elsif intersection_main_preserved == []
        "That is an antigram!"
