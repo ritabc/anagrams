@@ -23,4 +23,8 @@ describe ('Phrase#check_for_anagram') do
     phrase = Phrase.new("Ruby")
     expect(phrase.check_for_anagram("Bury")).to(eq("That is an anagram!"))
   end
+  it ("6. Will check for vowels/y's in the receiver word") do
+    phrase = Phrase.new("rbbr")
+    expect(phrase.validate_word).to(eq("Please enter a word or words with vowels."))
+  end
 end

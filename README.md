@@ -30,7 +30,8 @@ The phrase 'bury' is not an anagrams of 'rubys', and the program should be symme
   * remove spaces
   * (Optional) use regular expressions to remove other characters
 6. (Optional) Return which letters match if two words are Anagrams
-
+7. (Optional) Refactor
+  * create main_array during initialize
 
 ## Technologies Used
 

@@ -8,6 +8,21 @@ class Phrase
     @main_phrase
   end
 
+  def validate_word
+    main_array = @main_phrase.split('')
+    contains_vowels = false
+    main_array.each do |element|
+      if ((element == 'a') || (element == 'e') || (element == 'i') || (element == 'o') || (element == 'u') || (element == 'y'))
+        contains_vowels = true
+      end
+    end
+    if contains_vowels
+      "This is a word with vowels"
+    else
+      "Please enter a word or words with vowels."
+    end
+  end
+
   def check_for_anagram(argument)
     ## Attempt 2: uses the intersection method (&)
     ## intersection_main_preserved means the order is preserved from main
