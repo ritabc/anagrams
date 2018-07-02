@@ -2,54 +2,71 @@ class Phrase
 
   def initialize(receiver)
     @main_phrase = receiver
+    @main_phrase_array = @main_phrase.downcase.split(' ')
   end
 
   def get_receiver
     @main_phrase
   end
 
-  def has_vowels?(secondary)
-    main_array = @main_phrase.split('')
-    secondary_array = secondary.split('')
-    main_contains_vowels = false
-    secondary_contains_vowels = false
-    main_array.each do |element|
-      if ((element == 'a') || (element == 'e') || (element == 'i') || (element == 'o') || (element == 'u') || (element == 'y'))
-        main_contains_vowels = true
+  # def has_vowels?(secondary)
+  #   main_array = @main_phrase.split('')
+  #   secondary_array = secondary.split('')
+  #   main_contains_vowels = false
+  #   secondary_contains_vowels = false
+  #   main_array.each do |element|
+  #     if ((element == 'a') || (element == 'e') || (element == 'i') || (element == 'o') || (element == 'u') || (element == 'y'))
+  #       main_contains_vowels = true
+  #     end
+  #   end
+  #   secondary_array.each do |element|
+  #     if ((element == 'a') || (element == 'e') || (element == 'i') || (element == 'o') || (element == 'u') || (element == 'y'))
+  #       secondary_contains_vowels = true
+  #     end
+  #   end
+  #   if (main_contains_vowels && secondary_contains_vowels)
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
+
+  def check_for_english(argument_phrase)
+    word_dictionary ={}
+    File.foreach('en.txt').with_index do |line, index|
+      word_dictionary[line.strip] = index
+    end
+    argument_phrase_array = argument_phrase.downcase.split(' ')
+    argument_words_exist = true
+    receiver_words_exist = true
+    @main_phrase_array.each do |word|
+      if !(word_dictionary.has_key?(word.strip))
+        receiver_words_exist = false
+        break
+      else
+        next
       end
     end
-    secondary_array.each do |element|
-      if ((element == 'a') || (element == 'e') || (element == 'i') || (element == 'o') || (element == 'u') || (element == 'y'))
-        secondary_contains_vowels = true
+    argument_phrase_array.each do |word|
+      if !(word_dictionary.has_key?(word.strip))
+        argument_words_exist = false
+        break
+      else
+        next
       end
     end
-    if (main_contains_vowels && secondary_contains_vowels)
+    if (receiver_words_exist && argument_phrase_array)
       true
     else
       false
     end
   end
 
-  def check_for_english(word)
-    word_list_file = File.open('en.txt', 'r')
-    # word_list_file.readlines.first ## this works
-    ## foreach will be more efficient
-    word_dictionary ={}
-    File.foreach('en.txt', 'r') do |line|
-      word_dictionary[line.strip] = true
-    end
-    if word_dictionary[word] && word_dictionary[@main_phrase]
-      true
-    else
-      "Please enter a valid English word or words"
-    end
-  end
-
   def check_for_anagram(argument)
-    if has_vowels?(argument)
+    if check_for_english(argument)
       ## intersection_main_preserved means the order is preserved from main
       ## 'lc' stands for lowercase
-      main_no_whitespace_lc = @main_phrase.downcase.split(' ').join('')
+      main_no_whitespace_lc = @main_phrase_array.join('')
       secondary_no_whitespace_lc = argument.downcase.split(' ').join('')
       intersection_main_preserved = main_no_whitespace_lc.split('') & secondary_no_whitespace_lc.split('')
       intersection_secondary_preserved = secondary_no_whitespace_lc.split('') & main_no_whitespace_lc.split('')
@@ -72,7 +89,7 @@ class Phrase
         "These aren't anagrams but #{intersection_length} letter(s) match:#{intersection_string}"
       end
     else
-      "Please enter a word or words with vowels"
+      "Please enter a valid English word or words"
     end
   end
 end
