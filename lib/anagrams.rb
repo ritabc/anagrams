@@ -30,6 +30,21 @@ class Phrase
     end
   end
 
+  def check_for_english(word)
+    word_list_file = File.open('en.txt', 'r')
+    # word_list_file.readlines.first ## this works
+    ## foreach will be more efficient
+    word_dictionary ={}
+    File.foreach('en.txt', 'r') do |line|
+      word_dictionary[line.strip] = true
+    end
+    if word_dictionary[word]
+      true
+    else
+      "Please enter a valid English word or words"
+    end
+  end
+
   def check_for_anagram(argument)
     if has_vowels?(argument)
       ## intersection_main_preserved means the order is preserved from main

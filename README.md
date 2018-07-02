@@ -1,7 +1,8 @@
 # Anagrams & Antigrams
 
-#### Epicodus: Ruby Course: Friday, June 29th, 2018
-#### Independent Project
+#### Epicodus Independent Project
+##### Course: Ruby
+##### Week: One
 
 #### Rita Bennett-Chew
 
@@ -33,10 +34,11 @@ The phrase 'bury' is not an anagrams of 'rubys', and the program should be symme
 7. (Optional) Refactor
   * create main_array during initialize
 
-## Technologies Used
+## Technologies/Resources Used
 
-** Ruby 2.4.1
-** Gem rspec for TDD testing
+* Ruby 2.4.1
+* Gem rspec for TDD testing
+* [Words](https://github.com/atebits/Words) by atebits, makers of Letterpress
 
 ## License
 
