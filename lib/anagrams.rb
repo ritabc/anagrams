@@ -38,7 +38,7 @@ class Phrase
     File.foreach('en.txt', 'r') do |line|
       word_dictionary[line.strip] = true
     end
-    if word_dictionary[word]
+    if word_dictionary[word] && word_dictionary[@main_phrase]
       true
     else
       "Please enter a valid English word or words"

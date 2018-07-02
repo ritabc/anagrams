@@ -51,8 +51,16 @@ describe ('Phrase#check_for_anagram') do
     phrase = Phrase.new("cat")
     expect(phrase.check_for_anagram("batty")).to(eq("These aren't anagrams but 2 letter(s) match: a, t."))
   end
-  it ("13. Will check a file with a list of English words.") do
+  it ("13. Will check a file with a list of English words for the argument.") do
     phrase = Phrase.new("cavvy")
     expect(phrase.check_for_english("yvvac")).to(eq("Please enter a valid English word or words"))
   end
+  it ("14. Will check a file with the list of English words for the receiver") do
+    phrase = Phrase.new("cavvy")
+    expect(phrase.check_for_english("cave")).to(eq("Please enter a valid English word or words"))
+  end
+  # it ("15. Will check incorporate check_for_english into check_for_anagram method, checking both the receiver and the argument for english words") do
+  #   phrase = Phrase.new("cavvy")
+  #   expect(phrase.check_for_english("cave")).to(eq("Please enter a valid English word or words"))
+  # end
 end
